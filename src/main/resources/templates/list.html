@@ -10,6 +10,9 @@
         <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
         <h2>View All</h2>
         <ul>
+            <li>
+                <a th:href="@{/list/values(column=all)}" th:text="All"></a>
+            </li>
             <li th:each="column : ${columns}">
                 <a th:href="@{/list/values(column=${column.key})}" th:text="${column.value}"></a>
             </li>

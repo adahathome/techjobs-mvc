@@ -12,7 +12,18 @@
 
     <form th:action="@{/search/results}">
         <h2>Search by:</h2>
+        <p>
+            <span>
+                <input
+                        type="radio"
+                        name="searchType"
+                        th:id="all"
+                        th:value="all"
+                        th:checked="${all == 'all'}"/>
+                <label th:for="all" th:text="All"></label>
+            </span>
 
+        </p>
         <p>
             <span th:each="column : ${columns}">
                 <input
@@ -37,11 +48,12 @@
     <hr />
 
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h1 th:text="${#strings.capitalizeWords(subHeader)}"></h1>
 
         <div th:fragment="display-list" th:if="${jobs} and ${jobs.size()}">
 
             <table>
+                <th th:each="column : ${columns}" th:text="${column.value}"></th>
                 <tr th:each="job, idx : ${jobs}" th:class="${idx.odd} ? 'odd'">
                     <td th:text="${job.name}"></td>
                     <td th:text="${job.employer}"></td>

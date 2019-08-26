@@ -23,7 +23,6 @@ public class ListController {
         columnChoices.put("employer", "Employer");
         columnChoices.put("location", "Location");
         columnChoices.put("positiontype", "Position Type");
-        columnChoices.put("all", "All");
     }
 
     @RequestMapping(value = "")
